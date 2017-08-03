@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as BooksAPI from './BooksAPI'
 
-class ShowBookShelf extends Component {
+class ShowBookShelves extends Component {
 	
 	state = {
 		shelfBooks : []
@@ -81,4 +81,4 @@ class ShowBookShelf extends Component {
 
 }
 
-export default ShowBookShelf
+export default ShowBookShelves

@@ -2,7 +2,7 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchBooks from './SearchBooks'
-import BookShelf from './BookShelf'
+import ShowBookShelves from './ShowBookShelves'
 
 class BooksApp extends React.Component {
   state = {
@@ -32,7 +32,7 @@ class BooksApp extends React.Component {
         {this.state.showSearchPage ? (
           <SearchBooks />
         ) : (
-          <BookShelf books={ books }/>
+          <ShowBookShelves books={ books }/>
         )}
       </div>
     )
