@@ -2,19 +2,25 @@ import React, { Component } from 'react'
 import * as BooksAPI from './BooksAPI'
 
 class BookShelf extends Component{
-
+		
 	state = {
 		books: []
 	}
 
+	componentWillReceiveProps(nextProps){
+    this.setState({books: nextProps.books})
+  }
+
 
 	render() {
-		
+
+	const { books } = this.state
 
 	return (
-			<div className="bookshelf-books">
+		<div className="bookshelf-books">
 	    <ol className="books-grid">
-	    {this.state.books.map((book) => (
+
+	    {books.map((book) => (
 	      <li>
 	        <div className="book">
 	          <div className="book-top">
@@ -30,7 +36,7 @@ class BookShelf extends Component{
 	            </div>
 	          </div>
 	          <div className="book-title">{ book.title }</div>
-	          {book.authors.map((author) => (
+	          {(book.authors||[]).map((author) => (
 	          	<div className="book-authors">{ author }</div>
 	          ))}
 	        </div>

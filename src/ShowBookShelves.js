@@ -8,6 +8,10 @@ class ShowBookShelves extends Component {
 		shelfBooks : []
 	}
 
+	removeBook(){
+
+	}
+
 	render() {
 		const { shelfBooks } = this.state
 		const { books } = this.props
@@ -39,8 +43,7 @@ class ShowBookShelves extends Component {
 					{shelves.map((shelf) => (
 						<div className="bookshelf">
 							<h2 className="bookshelf-title">{ shelf.title}</h2>
-							{console.log(shelf.books)}
-							<BookShelf books={shelf.books} />
+							<BookShelf books={shelf.books} remove={this.removeBook} />
 
 	            <div className="open-search">
 	              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
@@ -51,7 +54,6 @@ class ShowBookShelves extends Component {
 					</div>
 				</div>
 			</div>
-
 		)
 
 	}
