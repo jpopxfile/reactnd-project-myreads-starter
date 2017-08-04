@@ -5,16 +5,11 @@ import { Link } from 'react-router-dom'
 
 class ShowBookShelves extends Component {
 	
-	state = {
-		shelfBooks : []
-	}
-
 	removeBook(){
 
 	}
 
 	render() {
-		const { shelfBooks } = this.state
 		const { books } = this.props
 		const shelves = [
 			{
