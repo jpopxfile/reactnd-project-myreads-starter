@@ -10,12 +10,32 @@ class BooksApp extends React.Component {
     books: []
   }
 
+  modifyBook(book,shelf){
+    if (shelf === "none"){
+      console.log("rm")
+      this.removeBook(book)
+    }
+    else{
+      console.log("add")
+      this.addBook(book,shelf)
+    }
+  }
+
+
   removeBook(book){
+    console.log("Real remove")
+    BooksAPI.update(book,"none")
+    /*
     this.setState((state) => ({
       books : state.books.filter((b) => b.id !== book.id)
-    }))
-    BooksAPI.update(book,"none")
+    }))*/
+    
+  }
 
+  static addBook(book, shelf){
+    console.log("Adding book")
+    
+    BooksAPI.update(book, shelf)
   }
 
   componentDidMount(){
@@ -33,13 +53,13 @@ class BooksApp extends React.Component {
       <div className="app">
         <Route path='/search' render={() => (
           <SearchBooks
-          removeBook={ this.removeBook}
+          modifyBook={ this.modifyBook}
            />
         )} />
         <Route exact path='/' render={() => (
           <ShowBookShelves 
           books={ books }
-          removeBook={ this.removeBook }
+          modifyBook={ this.modifyBook }
           />
         )} />
       </div>

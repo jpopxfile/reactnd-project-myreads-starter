@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 
 class Book extends Component{
 	
+
 	render(){
-		const {book} = this.props
+		const {book, modifyBook} = this.props
 
 		const shelves = [
 			{
@@ -29,7 +30,8 @@ class Book extends Component{
 					<div className="book-top">
 						<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${(book.imageLinks||{}).smallThumbnail})` }}></div>
 						<div className="book-shelf-changer">
-							<select value={book.shelf}>
+							<select value={book.shelf}
+							onChange={(event) => modifyBook(book, event.target.value)}>
 								<option value="none" disabled>Move to...</option>
 								{shelves.map((shelf) => (
 									<option value={shelf.tag}>{shelf.title}</option>

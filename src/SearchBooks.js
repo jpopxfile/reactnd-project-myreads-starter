@@ -38,7 +38,7 @@ class SearchBooks extends Component {
 
 	render() {
 		const { query, showingBooks } = this.state
-		const { removeBook } = this.props
+		const { modifyBook } = this.props
 		showingBooks.map((book) => {
 			console.log("book.imageLinks", !!book.imageLinks)
 		})
@@ -59,7 +59,7 @@ class SearchBooks extends Component {
         
 				<div className="search-books-results">
 					{console.log("aaa",showingBooks)}
-					<BookShelf books={showingBooks} removeBook={removeBook} />
+					<BookShelf books={showingBooks} modifyBook={modifyBook} />
 					
     		</div>
       </div>

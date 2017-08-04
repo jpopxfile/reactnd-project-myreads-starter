@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 class ShowBookShelves extends Component {
 
 	render() {
-		const { books, removeBook } = this.props
+		const { books, modifyBook } = this.props
 		const shelves = [
 			{
 			tag:"currentlyReading",
@@ -34,7 +34,7 @@ class ShowBookShelves extends Component {
 					{shelves.map((shelf) => (
 						<div className="bookshelf">
 							<h2 className="bookshelf-title">{ shelf.title}</h2>
-							<BookShelf books={shelf.books} removeBook={removeBook} />
+							<BookShelf books={shelf.books} modifyBook={modifyBook} />
 
 	            <div className="open-search">
 	              <Link to='/search'>Add a book</Link>
