@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import * as BooksAPI from './BooksAPI'
 import BookShelf from './BookShelf'
+import { Link } from 'react-router-dom'
 
 class ShowBookShelves extends Component {
 	
@@ -46,7 +47,7 @@ class ShowBookShelves extends Component {
 							<BookShelf books={shelf.books} remove={this.removeBook} />
 
 	            <div className="open-search">
-	              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+	              <Link to='/search'>Add a book</Link>
 	            </div>
 						</div>
 					))}
