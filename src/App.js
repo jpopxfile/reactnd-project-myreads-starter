@@ -10,10 +10,11 @@ class BooksApp extends React.Component {
     books: []
   }
 
-  modifyBook(book,shelf){
+  modifyBook = (book, shelf) =>{
     if (shelf === "none"){
       console.log("rm")
       this.removeBook(book)
+      
     }
     else{
       console.log("add")
@@ -22,20 +23,35 @@ class BooksApp extends React.Component {
   }
 
 
-  removeBook(book){
-    console.log("Real remove")
-    BooksAPI.update(book,"none")
-    /*
-    this.setState((state) => ({
-      books : state.books.filter((b) => b.id !== book.id)
-    }))*/
-    
+  removeBook = (book) => {
+    BooksAPI.update(book,"none").then(response =>{
+      this.setState((state) => ({
+        books : state.books.filter((b) => b.id !== book.id)
+      }))
+    })
   }
 
-  static addBook(book, shelf){
-    console.log("Adding book")
-    
-    BooksAPI.update(book, shelf)
+  addBook = (book,shelf) => {
+    book.shelf = shelf
+
+    //check if book is on shelf
+    let bookOnShelf = this.state.books.filter((b) => b.id === book.id)
+    let onShelf = bookOnShelf.length > 0
+
+    console.log(book)
+    BooksAPI.update(book,shelf).then(response =>{
+      if (onShelf){
+        this.setState((state) => ({
+          books : state.books.filter((b) => b.id !== book.id).concat(book)
+        }))
+      }
+      else{
+        this.setState((state) => ({
+          books : state.books.concat([book])
+        }))
+      }
+
+    })
   }
 
   componentDidMount(){
@@ -48,6 +64,8 @@ class BooksApp extends React.Component {
 
   render() {
     const { books } = this.state
+
+    console.log(books)
 
     return (
       <div className="app">
