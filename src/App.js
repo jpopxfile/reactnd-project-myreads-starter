@@ -7,14 +7,51 @@ import { Route } from 'react-router-dom'
 
 class BooksApp extends React.Component {
   state = {
-    books: [],
-    /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-    showSearchPage: true
+    books: []
+  }
+
+  modifyBook = (book, shelf) =>{
+    if (shelf === "none"){
+      console.log("rm")
+      this.removeBook(book)
+      
+    }
+    else{
+      console.log("add")
+      this.addBook(book,shelf)
+    }
+  }
+
+
+  removeBook = (book) => {
+    BooksAPI.update(book,"none").then(response =>{
+      this.setState((state) => ({
+        books : state.books.filter((b) => b.id !== book.id)
+      }))
+    })
+  }
+
+  addBook = (book,shelf) => {
+    book.shelf = shelf
+
+    //check if book is on shelf
+    let bookOnShelf = this.state.books.filter((b) => b.id === book.id)
+    let onShelf = bookOnShelf.length > 0
+
+    console.log(book)
+    BooksAPI.update(book,shelf).then(response =>{
+      if (onShelf){
+        this.setState((state) => ({
+          books : state.books.filter((b) => b.id !== book.id).concat(book)
+        }))
+      }
+      else{
+        this.setState((state) => ({
+          books : state.books.concat([book])
+        }))
+      }
+
+    })
   }
 
   componentDidMount(){
@@ -28,14 +65,22 @@ class BooksApp extends React.Component {
   render() {
     const { books } = this.state
 
+    console.log(books)
+
     return (
       <div className="app">
         <Route path='/search' render={() => (
-            <SearchBooks />
-          )}/>
+          <SearchBooks
+          modifyBook={ this.modifyBook}
+           />
+        )} />
         <Route exact path='/' render={() => (
-            <ShowBookShelves books={ books }/>
-          )}/>        
+          <ShowBookShelves 
+          books={ books }
+          modifyBook={ this.modifyBook }
+          />
+        )} />
+
       </div>
     )
   }
