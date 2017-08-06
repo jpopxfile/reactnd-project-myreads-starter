@@ -22,7 +22,6 @@ class BooksApp extends React.Component {
     }
   }
 
-
   removeBook = (book) => {
     BooksAPI.update(book,"none").then(response =>{
       this.setState((state) => ({
@@ -50,7 +49,6 @@ class BooksApp extends React.Component {
           books : state.books.concat([book])
         }))
       }
-
     })
   }
 
@@ -59,19 +57,16 @@ class BooksApp extends React.Component {
       this.setState({ books })
       console.log(books)
     })
-
   }
 
   render() {
     const { books } = this.state
 
-    console.log(books)
-
     return (
       <div className="app">
         <Route path='/search' render={() => (
           <SearchBooks
-          bookShelfBooks = { books }
+          bookShelfBooks={ books }
           modifyBook={ this.modifyBook}
            />
         )} />
@@ -81,7 +76,6 @@ class BooksApp extends React.Component {
           modifyBook={ this.modifyBook }
           />
         )} />
-
       </div>
     )
   }

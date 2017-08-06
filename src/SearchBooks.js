@@ -44,9 +44,6 @@ class SearchBooks extends Component {
 	render() {
 		const { query, showingBooks } = this.state
 		const { modifyBook, bookShelfBooks } = this.props
-		showingBooks.map((book) => {
-			console.log("book.imageLinks", !!book.imageLinks)
-		})
 	
 		return (
       <div className="search-books">

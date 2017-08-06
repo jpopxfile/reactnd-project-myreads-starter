@@ -27,7 +27,6 @@ class ShowBookShelves extends Component {
 			]
 		
 		shelves.map((shelf) => shelf["books"] = books.filter((b) => b.shelf === shelf.tag))
-		console.log(shelves)
 
 		return (
 			<div className="list-books">

@@ -62,7 +62,6 @@ class Book extends Component{
 			</div>
 			)
 	}
-
 }
 
 export default Book
