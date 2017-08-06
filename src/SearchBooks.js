@@ -60,7 +60,6 @@ class SearchBooks extends Component {
         </div>
         
 				<div className="search-books-results">
-					{console.log("aaa",showingBooks)}
 					<BookShelf books={showingBooks} bookShelfBooks={bookShelfBooks} modifyBook={modifyBook} />
 					
     		</div>
