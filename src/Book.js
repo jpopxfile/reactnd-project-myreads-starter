@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 class Book extends Component{
   static propTypes = {
@@ -44,7 +45,9 @@ class Book extends Component{
 		return(
 				<div className="book">
 					<div className="book-top">
-						<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${(book.imageLinks||{}).smallThumbnail})` }}></div>
+						<Link to={`/book/${book.id}`}>
+							<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${(book.imageLinks||{}).smallThumbnail})` }}></div>
+						</Link>
 						<div className="book-shelf-changer">
 							<select value={realShelf ? realShelf : book.shelf}
 							onChange={(event) => modifyBook(book, event.target.value)}>
@@ -60,7 +63,7 @@ class Book extends Component{
 						<div className="book-authors" key={book.id + author}>{ author }</div>
 					))}
 			</div>
-			)
+		)
 	}
 }
 

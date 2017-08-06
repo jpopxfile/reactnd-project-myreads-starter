@@ -123,7 +123,9 @@ body, .app {
   width: 140px;
 }
 .book-title,
-.book-authors {
+.book-authors,
+.book-publisher,
+.book-link {
   font-size: 0.8em;
 }
 .book-title {
@@ -131,6 +133,13 @@ body, .app {
 }
 .book-authors {
   color: #999;
+}
+.book-publisher {
+  color: brown;
+}
+
+.book-description {
+
 }
 
 .book-top {
@@ -171,4 +180,19 @@ body, .app {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+/* detail book */
+.detail-book {
+  margin: auto;
+  padding: 10px;
+  position: relative;
+  top: 10%;
+  left: 50%;
+}
+
+/* back-to */
+
+.back-to {
+ float: right;
 }

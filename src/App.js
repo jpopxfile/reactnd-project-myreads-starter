@@ -3,6 +3,7 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchBooks from './SearchBooks'
 import ShowBookShelves from './ShowBookShelves'
+import DetailedBook from './DetailedBook'
 import { Route } from 'react-router-dom'
 
 class BooksApp extends React.Component {
@@ -10,7 +11,7 @@ class BooksApp extends React.Component {
     books: []
   }
 
-  modifyBook = (book, shelf) =>{
+  modifyBook = (book, shelf) => {
     if (shelf === "none"){
       this.removeBook(book)
       
@@ -72,6 +73,7 @@ class BooksApp extends React.Component {
           modifyBook={ this.modifyBook }
           />
         )} />
+        <Route path="/book/:bookId" component={DetailedBook}/>
       </div>
     )
   }
