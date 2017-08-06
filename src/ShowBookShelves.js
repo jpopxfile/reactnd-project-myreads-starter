@@ -32,7 +32,7 @@ class ShowBookShelves extends Component {
 				<div className="list-books-content">
 					<div>
 					{shelves.map((shelf) => (
-						<div className="bookshelf">
+						<div className="bookshelf" key={shelf.tag}>
 							<h2 className="bookshelf-title">{ shelf.title}</h2>
 							<BookShelf books={shelf.books} modifyBook={modifyBook} />
 

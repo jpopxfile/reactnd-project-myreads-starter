@@ -45,14 +45,14 @@ class Book extends Component{
 							onChange={(event) => modifyBook(book, event.target.value)}>
 								<option value="none" disabled>Move to...</option>
 								{shelves.map((shelf) => (
-									<option value={shelf.tag}>{shelf.title}</option>
+									<option value={shelf.tag} key={book.id + "-" + shelf.tag}>{shelf.title}</option>
 								))}
 							</select>
 						</div>
 					</div>
 					<div className="book-title">{ book.title }</div>
 					{(book.authors||[]).map((author) => (
-						<div className="book-authors">{ author }</div>
+						<div className="book-authors" key={book.id + author}>{ author }</div>
 					))}
 			</div>
 			)
