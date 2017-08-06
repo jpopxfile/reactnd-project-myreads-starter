@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class Book extends Component{
-	
+  static propTypes = {
+    book: PropTypes.object.isRequired,
+    modifyBook: PropTypes.func.isRequired,
+    bookShelfBooks: PropTypes.array
+  }
 
 	render(){
 		const {book, modifyBook, bookShelfBooks} = this.props

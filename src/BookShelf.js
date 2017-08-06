@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
+import PropTypes from 'prop-types'
 
 class BookShelf extends Component{
+
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    modifyBook: PropTypes.func.isRequired,
+    bookShelfBooks: PropTypes.array
+  }
 
 	render() {
 
