@@ -40,6 +40,12 @@ class SearchBooks extends Component {
 		}
   }
 
+  clearQuery = () => {
+    this.setState({
+    	query: '',
+    	showingBooks: []
+    })
+  }
 
 	render() {
 		const { query, showingBooks } = this.state
@@ -57,6 +63,7 @@ class SearchBooks extends Component {
             />
             
           </div>
+          <button onClick={this.clearQuery}>Clear</button>
         </div>
         
 				<div className="search-books-results">
