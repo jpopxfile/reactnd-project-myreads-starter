@@ -4,7 +4,7 @@ class Book extends Component{
 	
 
 	render(){
-		const {book, modifyBook} = this.props
+		const {book, modifyBook, bookShelfBooks} = this.props
 
 		const shelves = [
 			{
@@ -25,12 +25,23 @@ class Book extends Component{
 			}
 		]
 
+		let realShelf
+
+		//If search, check if book exists on bookshelf and update status
+		if(bookShelfBooks){
+				let tempBook = bookShelfBooks.filter((b) => b.id === book.id)
+				if (tempBook.length > 0){
+					realShelf = tempBook[0].shelf 
+				}
+		}
+
+
 		return(
 				<div className="book">
 					<div className="book-top">
 						<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${(book.imageLinks||{}).smallThumbnail})` }}></div>
 						<div className="book-shelf-changer">
-							<select value={book.shelf}
+							<select value={realShelf ? realShelf : book.shelf}
 							onChange={(event) => modifyBook(book, event.target.value)}>
 								<option value="none" disabled>Move to...</option>
 								{shelves.map((shelf) => (
