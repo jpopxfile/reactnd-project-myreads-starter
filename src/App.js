@@ -35,7 +35,6 @@ class BooksApp extends React.Component {
     let bookOnShelf = this.state.books.filter((b) => b.id === book.id)
     let onShelf = bookOnShelf.length > 0
 
-    console.log(book)
     BooksAPI.update(book,shelf).then(response =>{
       if (onShelf){
         this.setState((state) => ({
