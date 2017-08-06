@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 import { Link } from 'react-router-dom'
 
 class DetailedBook extends Component{
-  static propTypes = {
-    books: PropTypes.string.isRequired
-  }
 
 	state = {
 		book: {},
