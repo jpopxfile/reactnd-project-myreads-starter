@@ -12,12 +12,10 @@ class BooksApp extends React.Component {
 
   modifyBook = (book, shelf) =>{
     if (shelf === "none"){
-      console.log("rm")
       this.removeBook(book)
       
     }
     else{
-      console.log("add")
       this.addBook(book,shelf)
     }
   }

@@ -19,7 +19,7 @@ class SearchBooks extends Component {
     this.setState({ query: query })
     if (query !== '') {
 			BooksAPI.search(query,20).then((data) => {
-				console.log(data)
+
 				if (data.length > 0) {
 					this.setState((state) => ({
 						showingBooks: data
