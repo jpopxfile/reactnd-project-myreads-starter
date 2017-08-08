@@ -39,6 +39,9 @@ class Book extends Component{
 				if (tempBook.length > 0){
 					realShelf = tempBook[0].shelf 
 				}
+				else {
+					realShelf = "none"
+				}
 		}
 
 
